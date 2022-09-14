@@ -1,0 +1,24 @@
+# create aliases for tables in snowflake
+# so that when source table are renamed, only the name in this file has to be changed.
+# sql in dbt can refer tables by their aliases like a variable
+
+# create alert with `freshness`. P.s. becareful with time zone
+
+version: 2
+
+sources:
+  - name: airbnb
+    schema: raw
+    tables:
+      - name: listings
+        identifier: raw_listings
+
+      - name: hosts
+        identifier: raw_hosts
+
+      - name: reviews
+        identifier: raw_reviews
+        loaded_at_field: date
+        freshness:
+          warn_after: { count: 8, period: hour }
+          error_after: { count: 24, period: hour }
