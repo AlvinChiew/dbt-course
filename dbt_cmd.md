@@ -20,7 +20,8 @@
 
 1. `dbt run`
     - validate & commit changes, execute incremental load
-    - use `--ful-refresh` to rebuild incremental table. Use when there is schema change
+    - use `--full-refresh` to rebuild incremental table. Use when there is schema change
+        - use `--select` to only full refresh a table
 
 1. `dbt seed`
     - import local files in `seeds` to warehouse
@@ -30,3 +31,13 @@
 
 1. `dbt source freshness`
     - check freshness based on definition in `source.yml`
+
+1. `dbt snapshot`
+    - create and update snapshot defined in `snapshots/` on warehouse as a table.
+
+1. `dbt test`
+    - run generic test defined in `schema.yml` and singular tests defined in `tests/`
+    - use `--select <test-name>` to only run specific test
+
+1. `dbt deps`
+    - install package/dependencies defined in `packages.yml` from [dbt hub](hub.getdbt.com)
