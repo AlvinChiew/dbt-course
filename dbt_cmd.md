@@ -22,12 +22,14 @@
     - validate & commit changes, execute incremental load
     - use `--full-refresh` to rebuild incremental table. Use when there is schema change
         - use `--select` to only full refresh a table
+            - use `+` before and/or after object to also refresh its backward and/or forward dependencies, e.g. `dbt run --select src_hosts+`
 
 1. `dbt seed`
     - import local files in `seeds` to warehouse
 
 1. `dbt compile`
     - validate if references are correct
+    - create query statements from `analyses` into `target/compiled`
 
 1. `dbt source freshness`
     - check freshness based on definition in `source.yml`
@@ -41,3 +43,8 @@
 
 1. `dbt deps`
     - install package/dependencies defined in `packages.yml` from [dbt hub](hub.getdbt.com)
+
+1. `dbt docs generate` & `dbt docs serve`
+    - generate docs in target (index.html, catalog.json)
+    - serve document at [localhost](http://localhost:8080)
+    - assets can be browsed via [localhost](http://localhost:8080/assets/)
