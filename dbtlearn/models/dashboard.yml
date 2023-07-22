@@ -1,0 +1,16 @@
+version: 2
+
+exposures:
+  - name: Exec Dashboard
+    type: dashboard
+    maturity: low
+    url: https://ccc2426d.us2a.app.preset.io/superset/dashboard/8/?edit=true&native_filters_key=D2S9wSd10P19J0-8I5-J1sK8sXVUbGjye70eyGDBgjM43sKZIZnqyfIVKkz98-sK
+    description: Executive Dashboard about Airbnb listings and hosts
+
+    depends_on:
+      - ref('dim_listings_w_hosts')
+      - ref('mart_fullmoon_reviews')
+
+    owner:
+      name: Alvin C
+      email: jingjie95@gmail.com

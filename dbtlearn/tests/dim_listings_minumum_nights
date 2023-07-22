@@ -1,0 +1,9 @@
+// minimum_nights must not be less than 1
+// *** moved to  custom generic test in schema.yml
+
+SELECT
+    *
+FROM
+    {{ ref('dim_listings_cleansed') }}
+WHERE minimum_nights < 1
+LIMIT 10
